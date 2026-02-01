@@ -1,0 +1,20 @@
+{
+    "name": "@emergency-orchestrator/ambulance",
+    "version": "1.0.0",
+    "description": "Ambulance response service",
+    "main": "dist/index.js",
+    "scripts": {
+        "build": "tsc",
+        "dev": "tsx watch src/index.ts",
+        "start": "node dist/index.js"
+    },
+    "dependencies": {
+        "@emergency-orchestrator/shared": "file:../shared",
+        "fastify": "^4.25.2"
+    },
+    "devDependencies": {
+        "@types/node": "^20.11.5",
+        "tsx": "^4.7.0",
+        "typescript": "^5.3.3"
+    }
+}

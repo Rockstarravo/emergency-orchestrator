@@ -1,0 +1,26 @@
+{
+  "name": "@emergency-orchestrator/agent",
+  "version": "1.0.0",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "start": "node ./run-worker.js",
+    "dev": "node --watch ./run-worker.js",
+    "lint": "tsc --noEmit",
+    "build:gateway": "tsc -p tsconfig.gateway.json",
+    "dev:gateway": "npm run build:gateway && node dist/realtime-gateway.js",
+    "agent": "tsx agent-cli.ts",
+    "agent:watch": "tsx agent-cli.ts --watch",
+    "daemon": "tsx daemon-cli.ts"
+  },
+  "dependencies": {
+    "@openai/agents": "^0.4.4",
+    "axios": "^1.7.9",
+    "openai": "^4.79.0",
+    "ws": "^8.17.0"
+  },
+  "devDependencies": {
+    "ts-node": "^10.9.2",
+    "typescript": "^5.6.3"
+  }
+}

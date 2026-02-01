@@ -1,0 +1,22 @@
+{
+    "name": "emergency-orchestrator",
+    "version": "1.0.0",
+    "description": "Emergency Orchestrator - Multi-agent coordination system",
+    "private": true,
+    "workspaces": [
+        "shared",
+        "services/*",
+        "infra"
+    ],
+    "scripts": {
+        "install:all": "npm install && npm install --workspaces",
+        "build:shared": "npm run build --workspace=shared",
+        "build:services": "npm run build --workspace=services/incident && npm run build --workspace=services/hospital && npm run build --workspace=services/ambulance && npm run build --workspace=services/guardian",
+        "build": "npm run build:shared && npm run build:services",
+        "dev": "npm run dev --workspace=infra",
+        "clean": "rm -rf node_modules shared/node_modules services/*/node_modules infra/node_modules shared/dist services/*/dist infra/dist"
+    },
+    "devDependencies": {
+        "typescript": "^5.3.3"
+    }
+}

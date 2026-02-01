@@ -1,0 +1,18 @@
+{
+    "name": "@emergency-orchestrator/infra",
+    "version": "1.0.0",
+    "description": "Infrastructure and dev tooling",
+    "main": "dist/dev-server.js",
+    "scripts": {
+        "build": "tsc",
+        "dev": "tsx src/dev-server.ts"
+    },
+    "dependencies": {
+        "concurrently": "^8.2.2"
+    },
+    "devDependencies": {
+        "@types/node": "^20.11.5",
+        "tsx": "^4.7.0",
+        "typescript": "^5.3.3"
+    }
+}
