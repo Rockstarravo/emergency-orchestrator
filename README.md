@@ -1,74 +1,128 @@
-# Emergency Orchestrator Agent 🚑🤖
+🚨 AI Emergency Response Orchestrator (Multimodal + Agents)
 
-A multimodal AI agent for emergency response coordination. It listens to live audio, analyzes incident context (including images), and coordinates with Hospital, Ambulance, and Guardian services.
+A real-time, multimodal emergency response system powered by OpenAI Agents SDK, enabling voice, images, and live coordination across hospitals, ambulances, and guardians — all driven by event-based AI agents.
 
-## Features
+Core idea:
+AI doesn’t just answer questions — it listens, observes, decides, and takes coordinated actions in real time.
 
--   **Real-time Voice Interface**: Uses OpenAI Realtime API for low-latency voice interaction.
--   **Multimodal Analysis**: Analyzes images uploaded during the emergency calls using GPT-4 Vision.
--   **Intelligent Coordination**: Decisions managed by a central "Coordinator" agent.
--   **Service Integration**: Connects with simulated Hospital, Ambulance, and Guardian services.
--   **Robust Audio Handling**: Features echo cancellation, silence detection, and noise filtering.
+⸻
 
-## Architecture
+🎯 Why This Project Exists
 
--   **Agent Daemon**: Watcher service that detects new incidents and triggers the agent.
--   **Realtime Gateway**: WebSocket server managing the audio stream with OpenAI.
--   **Coordinator**: The "Brain" that decides actions based on context.
--   **Runner**: Executes the Coordinator's decisions (dispatching services, logging events).
+In real emergencies:
+	•	People panic
+	•	Information arrives in fragments (voice, photos, partial context)
+	•	Response coordination is slow and manual
 
-## Prerequisites
+Most AI systems stop at “providing suggestions.”
+This project goes further — AI agents actively coordinate real systems.
 
--   Node.js v18+
--   OpenAI API Key (with access to Realtime API `gpt-4o-realtime-preview`)
+⸻
 
-## Setup
+✨ What This System Does
+	•	🎙️ Listens to users via real-time voice
+	•	🖼️ Understands uploaded images & documents
+	•	🧠 Uses AI agents to reason over evolving situations
+	•	🚑 Coordinates ambulance, hospital, and guardian workflows
+	•	🔄 Operates fully in real time using WebSockets
+	•	🧾 Maintains a full incident timeline as the source of truth
 
-1.  **Clone the repository**
-    ```bash
-    git clone <your-repo-url>
-    cd emergency-orchestrator
-    ```
+⸻
 
-2.  **Install dependencies**
-    ```bash
-    npm install
-    # or
-    bash start-all.sh --install
-    ```
+🧠 Key Architectural Principle
 
-3.  **Environment Configuration**
-    Create a `.env` file in the root directory:
-    ```env
-    OPENAI_API_KEY=sk-your-openai-key-here
-    
-    # Optional Overrides
-    INCIDENT_BASE_URL=http://localhost:4001
-    HOSPITAL_SERVICE_URL=http://localhost:4002
-    AMBULANCE_SERVICE_URL=http://localhost:4003
-    GUARDIAN_SERVICE_URL=http://localhost:4004
-    ```
+UI never talks to AI directly.
 
-## Running the System
+Everything flows through an Incident Timeline:
+	•	UI writes events
+	•	Agents read events
+	•	Agents act via tools
+	•	UI updates via WebSocket
 
-To start all services (Incident, Hospital, Ambulance, Guardian, Agent, UI):
+This mirrors real-world operational systems.
 
-```bash
-bash start-all.sh
-```
+⸻
 
-The services will be available at:
--   **Emergency UI**: http://localhost:3000
--   **Incident Service**: http://localhost:4001
--   **Hospital Service**: http://localhost:4002
--   **Ambulance Service**: http://localhost:4003
+🧩 System Components
 
-## Development
+1️⃣ Emergency Console (User / Bystander)
+	•	Real-time voice capture
+	•	Image & document uploads
+	•	Live agent interaction
+	•	Calm, minimal UI for stressful situations
 
--   **Agent Logic**: `agent/coordinator.ts`
--   **Audio Gateway**: `agent/realtime-gateway.ts`
--   **Context Builder**: `agent/context.ts`
+2️⃣ AI Coordinator Agent (OpenAI Agents SDK)
+	•	Reads incident context
+	•	Understands multimodal inputs
+	•	Decides next actions
+	•	Calls tools (dispatch, notify, update state)
 
-## License
+3️⃣ Operational Dashboards
 
-MIT
+Each dashboard is real-time, read-only from the incident stream:
+	•	🏥 Hospital Console – bed availability & readiness
+	•	🚑 Ambulance Console – dispatch & ETA
+	•	👨‍👩‍👧 Guardian Console – notification & acknowledgment
+
+4️⃣ Incident Service (System Backbone)
+	•	Append-only event timeline
+	•	WebSocket broadcasting
+	•	State management
+	•	Upload hosting
+
+⸻
+
+🔁 End-to-End Flow (Simple)
+	1.	User speaks or uploads images
+	2.	UI writes events to Incident Service
+	3.	AI Agent observes timeline changes
+	4.	Agent reasons & calls tools
+	5.	New events are appended
+	6.	All UIs update in real time
+
+⸻
+
+🛠️ Tech Stack (OpenAI-Native)
+	•	Frontend: Next.js + TypeScript + Tailwind + Framer Motion
+	•	Realtime: WebSockets
+	•	Backend: Node.js (TypeScript)
+	•	AI Agents: OpenAI Agents SDK (JS)
+	•	Realtime Audio: OpenAI Realtime API
+	•	Multimodal Models: OpenAI vision + audio models
+	•	Architecture: Event-driven, agent-orchestrated
+
+🔐 Safety & Responsibility
+	•	❌ No medical diagnosis
+	•	❌ No prescriptions
+	•	✅ Focus on coordination & escalation
+	•	✅ Encourages professional emergency response
+	•	✅ Clear audit trail via timeline
+
+⸻
+
+🌍 Why This Matters
+
+This project demonstrates:
+	•	True multimodal AI
+	•	Agentic decision-making
+	•	Real-time system orchestration
+	•	Production-grade architectural patterns
+
+It answers a critical question:
+
+What happens when AI is trusted to act — not just respond?
+
+⸻
+
+🚀 Future Extensions
+	•	Multiple specialized agents (medical, logistics, legal)
+	•	Incident analytics & replay
+	•	Geographic routing
+	•	Hardware integration (IoT, wearables)
+
+⸻
+
+🏁 Final Note
+
+This is not a chatbot.
+This is an AI-driven emergency coordination system.
