@@ -121,7 +121,53 @@ What happens when AI is trusted to act — not just respond?
 	•	Hardware integration (IoT, wearables)
 
 ⸻
+Setup 
 
+## Prerequisites
+
+-   Node.js v18+
+-   OpenAI API Key (with access to Realtime API `gpt-4o-realtime-preview`)
+
+## Setup
+
+1.  **Clone the repository**
+    ```bash
+    git clone <your-repo-url>
+    cd emergency-orchestrator
+    ```
+
+2.  **Install dependencies**
+    ```bash
+    npm install
+    # or
+    bash start-all.sh --install
+    ```
+
+3.  **Environment Configuration**
+    Create a `.env` file in the root directory:
+    ```env
+    OPENAI_API_KEY=sk-your-openai-key-here
+    
+    # Optional Overrides
+    INCIDENT_BASE_URL=http://localhost:4001
+    HOSPITAL_SERVICE_URL=http://localhost:4002
+    AMBULANCE_SERVICE_URL=http://localhost:4003
+    GUARDIAN_SERVICE_URL=http://localhost:4004
+    ```
+
+## Running the System
+
+To start all services (Incident, Hospital, Ambulance, Guardian, Agent, UI):
+
+```bash
+bash start-all.sh
+```
+
+The services will be available at:
+-   **Emergency UI**: http://localhost:3000
+-   **Incident Service**: http://localhost:4001
+-   **Hospital Service**: http://localhost:4002
+-   **Ambulance Service**: http://localhost:4003
 🏁 Final Note
 
 This is not a chatbot.
